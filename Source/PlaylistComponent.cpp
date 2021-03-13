@@ -33,18 +33,18 @@ PlaylistComponent::PlaylistComponent(DeckGUI* _deckGUI1,
    
     search.setTextToShowWhenEmpty("Search", 
                                   juce::Colours::red);
-    search.onReturnKey = [this] { searchLibrary (search.getText()); };
+    search.onReturnKey = [this] { playlistSearch(search.getText()); };
 
     playlist.setModel(this); 
     playlist.getHeader().addColumn("Track Title", 1, 200);
     playlist.getHeader().addColumn("Length of Track", 2, 200);;
     playlist.getHeader().addColumn("", 3, 1);
-    loadLibrary();
+    loadTrackPlaylist();
 }
 
 PlaylistComponent::~PlaylistComponent()
 {
-    saveLibrary();
+    saveTrackPlaylist();
 }
 
 void PlaylistComponent::paint (juce::Graphics& g)
@@ -74,7 +74,7 @@ void PlaylistComponent::resized()
 }
 int PlaylistComponent::getNumRows()
 {
-    return tracks.size();
+    return tracksData.size();
 }
 
 void PlaylistComponent::paintRowBackground(juce::Graphics& g,
@@ -106,7 +106,7 @@ void PlaylistComponent::paintCell(juce::Graphics& g,
     {
         if (columnId == 1)
         {
-            g.drawText(tracks[rowNumber].title,
+            g.drawText(tracksData[rowNumber].title,
                                                 2, 
                                                 0,
                                                 width-4, 
@@ -116,7 +116,7 @@ void PlaylistComponent::paintCell(juce::Graphics& g,
         }
         if (columnId == 2)
         {
-            g.drawText(tracks[rowNumber].length,
+            g.drawText(tracksData[rowNumber].length,
                                                 2, 
                                                 0,
                                                 width-4, 
@@ -150,32 +150,32 @@ void PlaylistComponent::buttonClicked(juce::Button* button)
 {
     if (button == &importTracks)
     {
-        importToLibrary();
+        addTrackPlaylist();
         playlist.updateContent();
     }
     else if (button == &addTrackDeckOne)
     {
-        loadInPlayer(deckGUI1);
+       addToPlayer(deckGUI1);
     }
     else if (button == &addTrackDeckTwo)
     {
-        loadInPlayer(deckGUI2);
+        addToPlayer(deckGUI2);
     }
     else
     {
         int id = std::stoi(button->getComponentID().toStdString());
-        deleteFromTracks(id);
+        deleteTrack(id);
         playlist.updateContent();
     }
 }
 
-void PlaylistComponent::loadInPlayer(DeckGUI* deckGUI)
+void PlaylistComponent::addToPlayer(DeckGUI* deckGUI)
 {
     int selectedRow{playlist.getSelectedRow()};
     if (selectedRow != -1)
     {
         
-        deckGUI->loadAudio(tracks[selectedRow].URL);
+        deckGUI->loadAudio(tracksData[selectedRow].URL);
     }
     else
     {
@@ -183,7 +183,7 @@ void PlaylistComponent::loadInPlayer(DeckGUI* deckGUI)
     }
 }
 
-void PlaylistComponent::importToLibrary()
+void PlaylistComponent::addTrackPlaylist()
 {
     FileChooser chooser{"Audio File..."};
     if (chooser.browseForMultipleFilesToOpen())
@@ -191,54 +191,54 @@ void PlaylistComponent::importToLibrary()
         for (const juce::File& file : chooser.getResults())
         {
             juce::String fileNameWithoutExtension{file.getFileNameWithoutExtension()};
-            if (!isInTracks(fileNameWithoutExtension))
+            if (!checkDuplicateTrack(fileNameWithoutExtension))
             {
                 TrackData newTrackData{ file };
                 juce::URL audioURL{ file };
                 newTrackData.length = getLength(audioURL) ;
-                tracks.push_back(newTrackData);
+                tracksData.push_back(newTrackData);
             }
           }
         }
 }
 
 
-bool PlaylistComponent::isInTracks(juce::String fileNameWithoutExtension)
+bool PlaylistComponent::checkDuplicateTrack(juce::String fileNameWithoutExtension)
 {
-    return (std::find(tracks.begin(), tracks.end(), fileNameWithoutExtension) != tracks.end());
+    return (std::find(tracksData.begin(), tracksData.end(), fileNameWithoutExtension) != tracksData.end());
 }
 
-void PlaylistComponent::deleteFromTracks(int id)
+void PlaylistComponent::deleteTrack(int id)
 {
-    tracks.erase(tracks.begin() + id);
+    tracksData.erase(tracksData.begin() + id);
 }
 
 juce::String PlaylistComponent::getLength(juce::URL audioURL)
 {
     playerForParsingMetaData->loadURL(audioURL);
-    double seconds{ playerForParsingMetaData->getSeconds() };
-    juce::String minutes{ secondsToMinutes(seconds) };
-    return minutes;
+    double sec{ playerForParsingMetaData->getSeconds() };
+    juce::String min{ getMinutes(sec) };
+    return min;
 }
 
-juce::String PlaylistComponent::secondsToMinutes(double seconds)
+juce::String PlaylistComponent::getMinutes(double seconds)
 {
-    int secondsRounded{ int(std::round(seconds)) };
-    juce::String min{ std::to_string(secondsRounded / 60) };
-    juce::String sec{ std::to_string(secondsRounded % 60) };
+    int Rounded{int(std::round(seconds))};
+    juce::String m{std::to_string(Rounded / 60)};
+    juce::String s{std::to_string(Rounded % 60)};
     
-    if (sec.length() < 2) // if seconds is 1 digit or less
+    if (s.length() < 2) // if seconds is 1 digit or less
     {
-        sec = sec.paddedLeft('0', 2);
+        s = s.paddedLeft('0', 2);
     }
-    return juce::String{ min + ":" + sec };
+    return String{ m + ":" + s };
 }
 
-void PlaylistComponent::searchLibrary(juce::String searchText)
+void PlaylistComponent::playlistSearch(juce::String searchText)
 {
     if (searchText != "")
     {
-        int rowNumber = whereInTracks(searchText);
+        int rowNumber = searchPlaylist(searchText);
         playlist.selectRow(rowNumber);
     }
     else
@@ -247,30 +247,30 @@ void PlaylistComponent::searchLibrary(juce::String searchText)
     }
 }
 
-int PlaylistComponent::whereInTracks(juce::String searchText)
+int PlaylistComponent::searchPlaylist(juce::String searchText)
 {
-    auto it = find_if(tracks.begin(), tracks.end(), 
+    auto it = find_if(tracksData.begin(), tracksData.end(), 
         [&searchText](const TrackData& obj) {return obj.title.contains(searchText); });
     int i = -1;
 
-    if (it != tracks.end())
+    if (it != tracksData.end())
     {
-        i = std::distance(tracks.begin(), it);
+        i = std::distance(tracksData.begin(), it);
     }
 
     return i;
 }
 
-void PlaylistComponent::saveLibrary()
+void PlaylistComponent::saveTrackPlaylist()
 {
     std::ofstream playlist("playlist.csv");
-    for (TrackData& a : tracks)
+    for (TrackData& a : tracksData)
     {
         playlist << a.file.getFullPathName() << "," << a.length << "\n";
     }
 }
 
-void PlaylistComponent::loadLibrary()
+void PlaylistComponent::loadTrackPlaylist()
 {
     std::ifstream playlist("playlist.csv");
     std::string filePath;
@@ -284,7 +284,7 @@ void PlaylistComponent::loadLibrary()
 
             getline(playlist, length);
             newTrackData.length = length;
-            tracks.push_back(newTrackData);
+            tracksData.push_back(newTrackData);
         }
     }
     playlist.close();

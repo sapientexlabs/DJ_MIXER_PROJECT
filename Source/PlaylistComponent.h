@@ -46,7 +46,7 @@ public:
                                        bool isRowSelected, 
                                        Component* existingComponentToUpdate) override;
     void buttonClicked(juce::Button* button) override;
-    std::vector<TrackData> tracks;
+    std::vector<TrackData> tracksData;
     TextButton importTracks{"+PLAYLIST"};
     TextButton addTrackDeckOne{"+DECKONE"};
     TextButton addTrackDeckTwo{"+DECKTWO"};
@@ -60,16 +60,18 @@ private:
     DJAudioPlayer* playerForParsingMetaData;
     
     juce::String getLength(juce::URL audioURL);
-    juce::String secondsToMinutes(double seconds);
+    juce::String getMinutes(double seconds);
 
-    void importToLibrary();
-    void searchLibrary(juce::String searchText);
-    void saveLibrary();
-    void loadLibrary();
-    void deleteFromTracks(int id);
-    bool isInTracks(juce::String fileNameWithoutExtension);
-    int whereInTracks(juce::String searchText);
-    void loadInPlayer(DeckGUI* deckGUI);
+    void addTrackPlaylist();
 
+    void saveTrackPlaylist();
+    void loadTrackPlaylist();
+    void deleteTrack(int id);
+    bool checkDuplicateTrack(juce::String fileNameWithoutExtension);
+    int searchPlaylist(juce::String searchText);
+    void addToPlayer(DeckGUI* deckGUI);
+    
+
+    void playlistSearch(juce::String searchText);
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PlaylistComponent)
 };
