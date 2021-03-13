@@ -11,13 +11,8 @@
 #include "TrackData.h"
 #include <filesystem>
 
-TrackData::TrackData(File _file) : file(_file), 
+TrackData::TrackData(File _file) : file(_file),
                                    title(_file.getFileNameWithoutExtension())                                
 {
     DBG("NICE JOB!!!" << title);
 }
-
-// bool TrackData::operator==(const juce::String& other) const 
-// {
-//     return title == other;
-// }

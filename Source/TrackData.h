@@ -19,7 +19,3 @@ class TrackData
         String title;
         String length;       
 };
-
-//juce::URL URL;
-        /**objects are compared by title*/
-        //bool operator==(const juce::String& other) const;//
