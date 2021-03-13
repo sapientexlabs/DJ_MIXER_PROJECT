@@ -69,6 +69,10 @@
 			isa = PBXBuildFile;
 			fileRef = C9ED5F4BC7003BEBCBAB1FC3;
 		};
+		966395F5DED7FBDF60564BC8 = {
+			isa = PBXBuildFile;
+			fileRef = E40729F8CD34AC8FD4F62C70;
+		};
 		78AD87CEB890BBD7FE1F1CDA = {
 			isa = PBXBuildFile;
 			fileRef = 0FB521BBF72F6BD30CFBBC8C;
@@ -259,6 +263,13 @@
 			name = "juce_audio_utils";
 			path = "~/JUCE/modules/juce_audio_utils";
 			sourceTree = "<absolute>";
+		};
+		3D05706864881B02BABEB177 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = PlaylistComponent.h;
+			path = ../../Source/PlaylistComponent.h;
+			sourceTree = "SOURCE_ROOT";
 		};
 		40F2E67395282F43D5437E3E = {
 			isa = PBXFileReference;
@@ -484,6 +495,13 @@
 			path = System/Library/Frameworks/CoreAudio.framework;
 			sourceTree = SDKROOT;
 		};
+		E40729F8CD34AC8FD4F62C70 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = PlaylistComponent.cpp;
+			path = ../../Source/PlaylistComponent.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		E7FDCBCE220F888204C5A718 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -531,7 +549,9 @@
 			children = (
 				C9ED5F4BC7003BEBCBAB1FC3,
 				81082241D1EA451D42D9D5CF,
+				E40729F8CD34AC8FD4F62C70,
 				0FB521BBF72F6BD30CFBBC8C,
+				3D05706864881B02BABEB177,
 				90E58F241F09D2F50D079487,
 				C803B2AD35DFF15837ABCE5B,
 				2839F06D6C49505A7A98EA5D,
@@ -871,6 +891,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F1EA0704433E36569AA2BD5,
+				966395F5DED7FBDF60564BC8,
 				78AD87CEB890BBD7FE1F1CDA,
 				5D6D40CFD636EABE938A1744,
 				08FB409D54B112C7F3F39850,

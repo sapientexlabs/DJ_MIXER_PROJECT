@@ -535,4 +535,5 @@ build/intermediate/Debug/MainComponent_a6ffb4a5.o: \
  /home/sapientex/scratch/src/juce/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h \
  /home/sapientex/scratch/src/juce/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h \
  ../../Source/DJAudioPlayer.h ../../Source/DeckGUI.h \
- ../../Source/WaveformDisplay.h
+ ../../Source/WaveformDisplay.h ../../Source/PlaylistComponent.h \
+ ../../Source/TrackData.h

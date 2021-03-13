@@ -8,7 +8,11 @@
             file="Source/WaveformDisplay.cpp"/>
       <FILE id="P8saE2" name="WaveformDisplay.h" compile="0" resource="0"
             file="Source/WaveformDisplay.h"/>
+      <FILE id="LXPWwS" name="PlaylistComponent.cpp" compile="1" resource="0"
+            file="Source/PlaylistComponent.cpp"/>
       <FILE id="mY8mBE" name="DeckGUI.cpp" compile="1" resource="0" file="Source/DeckGUI.cpp"/>
+      <FILE id="HPRvLp" name="PlaylistComponent.h" compile="0" resource="0"
+            file="Source/PlaylistComponent.h"/>
       <FILE id="pXoLBs" name="DeckGUI.h" compile="0" resource="0" file="Source/DeckGUI.h"/>
       <FILE id="TIQiuh" name="DJAudioPlayer.cpp" compile="1" resource="0"
             file="Source/DJAudioPlayer.cpp"/>
