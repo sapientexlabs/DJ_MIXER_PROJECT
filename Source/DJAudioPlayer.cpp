@@ -11,7 +11,7 @@
 #include "DJAudioPlayer.h"
 
 DJAudioPlayer::DJAudioPlayer(AudioFormatManager& _formatManager) 
-: formatManager(_formatManager)
+                            : formatManager(_formatManager)
 {
 
 }
@@ -98,4 +98,8 @@ void DJAudioPlayer::stop()
 double DJAudioPlayer::getPositionRelative()
 {
     return transportSource.getCurrentPosition() / transportSource.getLengthInSeconds();
+}
+ double DJAudioPlayer::getLengthInSeconds()
+{
+    return transportSource.getLengthInSeconds();
 }

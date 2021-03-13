@@ -56,7 +56,13 @@
         "random": "cpp",
         "set": "cpp",
         "string": "cpp",
-        "*.mm": "cpp"
+        "*.mm": "cpp",
+        "condition_variable": "cpp",
+        "list": "cpp",
+        "unordered_set": "cpp",
+        "mutex": "cpp",
+        "shared_mutex": "cpp",
+        "bit": "cpp"
     },
     "C_Cpp.intelliSenseEngine": "Tag Parser"
 }

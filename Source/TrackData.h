@@ -15,10 +15,11 @@ class TrackData
 {
     public:
         TrackData(juce::File _file);
-        juce::File file;
-        juce::URL URL;
-        juce::String title;
-        juce::String length;
-        /**objects are compared by title*/
-        bool operator==(const juce::String& other) const;
+        File file;
+        String title;
+        String length;       
 };
+
+//juce::URL URL;
+        /**objects are compared by title*/
+        //bool operator==(const juce::String& other) const;//

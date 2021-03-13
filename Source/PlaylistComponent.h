@@ -9,6 +9,7 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+#include <memory>
 
 
 //==============================================================================
@@ -44,6 +45,8 @@ public:
 
    void buttonClicked(Button* button) override; 
 
+   std::vector<TrackData> tracks;
+
 private:
 
     TextButton importTracks{"+PLAYLIST"};
@@ -59,22 +62,19 @@ private:
     
     DJAudioPlayer* playerForParsingMetaData;
 
-    std::vector<TrackData> tracks; 
-
     void addTrackPlaylist();
     void saveTrackPlaylist();
     void loadTrackPlaylist();
     void deleteTrack(int id);
     
     
-    void loadDeck(DeckGUI* deckGUI);
+    
+    bool checkDuplicateTrack(juce::String fileNameWithoutExtension);
+    String getLength(juce::URL audioURL);
+    String secondsToMinutes(double seconds); 
     
 
-    String getLength(juce::URL audioURL);
-    String secondsToMinutes(double seconds);
-
-    bool checkDuplicateTrack(juce::String fileNameWithoutExtension); 
-
+    void loadDeck(DeckGUI* deckGUI);
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PlaylistComponent)
 
