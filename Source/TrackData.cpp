@@ -16,7 +16,7 @@ TrackData::TrackData(juce::File _file) : file(_file),
                                  title(_file.getFileNameWithoutExtension()),
                                  URL(juce::URL{ _file })
 {
-    DBG("Created new track with title: " << title);
+   std::cout << "Success TrackData::TrackData added"; 
 }
 
 bool TrackData::operator==(const juce::String& other) const 
