@@ -200,7 +200,6 @@ Component * PlaylistComponent::refreshComponentForCell (int rowNumber,
   }   
   String PlaylistComponent::secondsToMinutes(double seconds)
   {
-    return 0;
   }
 
 

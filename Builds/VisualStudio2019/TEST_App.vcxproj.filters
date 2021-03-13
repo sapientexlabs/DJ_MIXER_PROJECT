@@ -472,6 +472,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\TrackData.cpp">
+      <Filter>TEST\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\WaveformDisplay.cpp">
       <Filter>TEST\Source</Filter>
     </ClCompile>
@@ -2703,6 +2706,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\TrackData.h">
+      <Filter>TEST\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\WaveformDisplay.h">
       <Filter>TEST\Source</Filter>
     </ClInclude>

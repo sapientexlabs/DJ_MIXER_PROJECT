@@ -65,6 +65,10 @@
 			isa = PBXBuildFile;
 			fileRef = 58E1F043E706B042B8E2F549;
 		};
+		EBE26802829BE0C1A7C306E9 = {
+			isa = PBXBuildFile;
+			fileRef = 1E0579E397ACC016D08B1E05;
+		};
 		1F1EA0704433E36569AA2BD5 = {
 			isa = PBXBuildFile;
 			fileRef = C9ED5F4BC7003BEBCBAB1FC3;
@@ -200,6 +204,20 @@
 			name = "juce_events";
 			path = "~/JUCE/modules/juce_events";
 			sourceTree = "<absolute>";
+		};
+		1D00820F78B8E86983D978FA = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = TrackData.h;
+			path = ../../Source/TrackData.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		1E0579E397ACC016D08B1E05 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = TrackData.cpp;
+			path = ../../Source/TrackData.cpp;
+			sourceTree = "SOURCE_ROOT";
 		};
 		20454F2803374EE03B0A50A4 = {
 			isa = PBXFileReference;
@@ -547,6 +565,8 @@
 		F2DB8C4CB7FB77C01DBF6A61 = {
 			isa = PBXGroup;
 			children = (
+				1E0579E397ACC016D08B1E05,
+				1D00820F78B8E86983D978FA,
 				C9ED5F4BC7003BEBCBAB1FC3,
 				81082241D1EA451D42D9D5CF,
 				E40729F8CD34AC8FD4F62C70,
@@ -890,6 +910,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBE26802829BE0C1A7C306E9,
 				1F1EA0704433E36569AA2BD5,
 				966395F5DED7FBDF60564BC8,
 				78AD87CEB890BBD7FE1F1CDA,
