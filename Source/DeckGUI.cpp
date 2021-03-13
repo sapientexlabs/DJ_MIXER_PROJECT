@@ -24,8 +24,17 @@ DeckGUI::DeckGUI(DJAudioPlayer* _player,
     addAndMakeVisible(loadButton);
        
     addAndMakeVisible(volSlider);
+    addAndMakeVisible (volLabel);
+
     addAndMakeVisible(speedSlider);
+    addAndMakeVisible(speedLabel);
+
     addAndMakeVisible(posSlider);
+    addAndMakeVisible(posLabel); 
+    
+   
+    
+    
 
     addAndMakeVisible(waveformDisplay);
 
@@ -34,13 +43,29 @@ DeckGUI::DeckGUI(DJAudioPlayer* _player,
     stopButton.addListener(this);
     loadButton.addListener(this);
 
+    
+   
     volSlider.addListener(this);
+    volLabel.setText ("Volume", juce::dontSendNotification);
+    volLabel.attachToComponent (&volSlider, true);
+    volLabel.setColour (juce::Label::textColourId, juce::Colours::aquamarine);
+    volLabel.setJustificationType (juce::Justification::left);
+    
     speedSlider.addListener(this);
+    speedLabel.setText ("Speed", juce::dontSendNotification);
+    speedLabel.attachToComponent (&speedSlider, true);
+    speedLabel.setColour (juce::Label::textColourId, juce::Colours::aquamarine);
+    speedLabel.setJustificationType (juce::Justification::left);
+    
     posSlider.addListener(this);
+    posLabel.setText ("Position", juce::dontSendNotification);
+    posLabel.attachToComponent (&posSlider, true);
+    posLabel.setColour (juce::Label::textColourId, juce::Colours::aquamarine);
+    posLabel.setJustificationType (juce::Justification::left);
 
 
     volSlider.setRange(0.0, 1.0);
-    speedSlider.setRange(0.0, 100.0);
+    speedSlider.setRange(0.0, 10.0);
     posSlider.setRange(0.0, 1.0);
 
     startTimer(500);
@@ -75,15 +100,16 @@ void DeckGUI::paint (Graphics& g)
 
 void DeckGUI::resized()
 {
-    double rowH = getHeight() / 8; 
-    playButton.setBounds(0, 0, getWidth(), rowH);
-    stopButton.setBounds(0, rowH, getWidth(), rowH);  
-    volSlider.setBounds(0, rowH * 2, getWidth(), rowH);
-    speedSlider.setBounds(0, rowH * 3, getWidth(), rowH);
-    posSlider.setBounds(0, rowH * 4, getWidth(), rowH);
-    waveformDisplay.setBounds(0, rowH * 5, getWidth(), rowH * 2);
-    loadButton.setBounds(0, rowH * 7, getWidth(), rowH);
-
+    double rowH = getHeight() / 6;
+    double columnH = getWidth() / 3 ; 
+    waveformDisplay.setBounds(0, 0, getWidth(),rowH *2);
+    volSlider.setBounds(columnH*0.25,rowH*2,getWidth(),rowH);
+    speedSlider.setBounds(columnH*0.25,rowH*3,getWidth(),rowH);
+    posSlider.setBounds(columnH*0.25,rowH*4,getWidth(),rowH);
+    playButton.setBounds(0,rowH*5,columnH,rowH);
+    stopButton.setBounds(columnH * 1,rowH*5,columnH,rowH);
+    loadButton.setBounds(columnH * 2,rowH*5,columnH,rowH);
+    
 }
 
 void DeckGUI::buttonClicked(Button* button)

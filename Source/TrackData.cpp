@@ -15,7 +15,7 @@ TrackData::TrackData(juce::File _file) : file(_file),
                                  title(_file.getFileNameWithoutExtension()),
                                  URL(juce::URL{ _file })
 {
-    DBD("NICE JOB!!!" << title);
+    DBG("NICE JOB!!!" << title);
 }
 
 bool TrackData::operator==(const juce::String& other) const 

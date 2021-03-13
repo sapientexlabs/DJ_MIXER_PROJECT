@@ -53,6 +53,10 @@ private:
     Slider speedSlider;
     Slider posSlider;
 
+    juce::Label volLabel;
+    juce::Label speedLabel;
+    juce::Label posLabel;
+
     WaveformDisplay waveformDisplay;
 
     DJAudioPlayer* player; 
