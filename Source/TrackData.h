@@ -7,7 +7,6 @@
 
   ==============================================================================
 */
-
 #pragma once
 #include <JuceHeader.h>
 
@@ -15,7 +14,10 @@ class TrackData
 {
     public:
         TrackData(juce::File _file);
-        File file;
-        String title;
-        String length;       
-};
+        juce::File file;
+        juce::URL URL;
+        juce::String title;
+        juce::String length;
+        /**objects are compared by title*/
+        bool operator==(const juce::String& other) const;
+}; 

@@ -11,8 +11,15 @@
 #include "TrackData.h"
 #include <filesystem>
 
-TrackData::TrackData(File _file) : file(_file),
-                                   title(_file.getFileNameWithoutExtension())                                
+
+TrackData::TrackData(juce::File _file) : file(_file), 
+                                 title(_file.getFileNameWithoutExtension()),
+                                 URL(juce::URL{ _file })
 {
-    DBG("NICE JOB!!!" << title);
+    DBG("Created new track with title: " << title);
+}
+
+bool TrackData::operator==(const juce::String& other) const 
+{
+    return title == other;
 }

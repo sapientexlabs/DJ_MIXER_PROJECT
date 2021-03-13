@@ -44,11 +44,13 @@ private:
 
     DJAudioPlayer player1{formatManager};
     DeckGUI deckGUI1{&player1, formatManager, thumbCache}; 
-
+    DJAudioPlayer playerForParsingMetaData{formatManager};
     DJAudioPlayer player2{formatManager};
     DeckGUI deckGUI2{&player2, formatManager, thumbCache}; 
 
-    PlaylistComponent playlistComponent;
+    PlaylistComponent playlistComponent{ &deckGUI1, &deckGUI2, &playerForParsingMetaData };
+
+    //PlaylistComponent playlistComponent;
 
     MixerAudioSource mixerSource; 
     

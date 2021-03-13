@@ -60,6 +60,8 @@ private:
     WaveformDisplay waveformDisplay;
 
     DJAudioPlayer* player; 
+    
+    friend class PlaylistComponent;
 
     void loadAudio(URL audioURL);
 

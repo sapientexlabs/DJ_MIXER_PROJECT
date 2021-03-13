@@ -533,6 +533,6 @@ build/intermediate/Debug/PlaylistComponent_76bc332c.o: \
  /home/sapientex/scratch/src/juce/JUCE/modules/juce_opengl/opengl/juce_OpenGLShaderProgram.h \
  /home/sapientex/scratch/src/juce/JUCE/modules/juce_opengl/opengl/juce_OpenGLTexture.h \
  /home/sapientex/scratch/src/juce/JUCE/modules/juce_opengl/utils/juce_OpenGLAppComponent.h \
- ../../Source/PlaylistComponent.h ../../Source/DeckGUI.h \
- ../../Source/DJAudioPlayer.h ../../Source/WaveformDisplay.h \
- ../../Source/TrackData.h
+ ../../Source/PlaylistComponent.h ../../Source/TrackData.h \
+ ../../Source/DeckGUI.h ../../Source/DJAudioPlayer.h \
+ ../../Source/WaveformDisplay.h
