@@ -47,15 +47,14 @@ public:
                                        Component* existingComponentToUpdate) override;
     void buttonClicked(juce::Button* button) override;
     std::vector<TrackData> tracks;
+    TextButton importTracks{"+PLAYLIST"};
+    TextButton addTrackDeckOne{"+DECKONE"};
+    TextButton addTrackDeckTwo{"+DECKTWO"};
+
 private:
   
-    
-    juce::TextButton importButton{ "IMPORT TRACKS" };
-    juce::TextEditor searchField;
-    juce::TableListBox library;
-    juce::TextButton addToPlayer1Button{ "ADD TO DECK 1" };
-    juce::TextButton addToPlayer2Button{ "ADD TO DECK 2" };
-
+    juce::TextEditor search;
+    juce::TableListBox playlist;
     DeckGUI* deckGUI1;
     DeckGUI* deckGUI2;
     DJAudioPlayer* playerForParsingMetaData;

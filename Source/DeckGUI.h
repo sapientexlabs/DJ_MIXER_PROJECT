@@ -1,19 +1,14 @@
 /*
   ==============================================================================
-
     DeckGUI.h
     Created: 7 Mar 2021 4:30:49pm
     Author:  sapientex
-
   ==============================================================================
 */
-
 #pragma once
-
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "DJAudioPlayer.h"
 #include "WaveformDisplay.h"
-
 //==============================================================================
 /*
 */
@@ -28,42 +23,28 @@ public:
            AudioFormatManager & 	formatManagerToUse,
            AudioThumbnailCache & 	cacheToUse );
     ~DeckGUI();
-
     void paint (Graphics&) override;
     void resized() override;
-
      /** implement Button::Listener */
     void buttonClicked (Button *) override;
-
     /** implement Slider::Listener */
     void sliderValueChanged (Slider *slider) override;
-
     bool isInterestedInFileDrag (const StringArray &files) override;
     void filesDropped (const StringArray &files, int x, int y) override; 
-
     void timerCallback() override; 
-
 private:
-
+  friend class PlaylistComponent;
+  void loadAudio(URL audioURL);
     TextButton playButton{"PLAY"};
     TextButton stopButton{"STOP"};
     TextButton loadButton{"LOAD"};
-  
     Slider volSlider; 
     Slider speedSlider;
     Slider posSlider;
-
     juce::Label volLabel;
     juce::Label speedLabel;
     juce::Label posLabel;
-
     WaveformDisplay waveformDisplay;
-
     DJAudioPlayer* player; 
-    
-    friend class PlaylistComponent;
-
-    void loadAudio(URL audioURL);
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeckGUI)
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeckGUI)
 };
