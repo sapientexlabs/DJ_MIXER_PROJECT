@@ -4,15 +4,17 @@
             "name": "Linux",
 
             "includePath": [
-                "${workspaceFolder}/**", 
-                "/home/sapientex/scratch/src/juce/JUCE/modules/"
+                "${workspaceFolder}/**",
+                "/home/sapientex/scratch/src/juce/JUCE/modules/",
+                "/home/sapientex/scratch/src/juce/TEST/JuceLibraryCode/"
             ],
 
             "browse": {
                 "limitSymbolsToIncludedHeaders": false,
                 "path": [
-                    "${workspaceFolder}/**", 
-                    "/home/sapientex/scratch/src/juce/JUCE/modules/**"
+                    "${workspaceFolder}/**",
+                    "/home/sapientex/scratch/src/juce/JUCE/modules/**",
+                    "/home/sapientex/scratch/src/juce/TEST/JuceLibraryCode/**"
                 ]
             },
            "defines": [],
