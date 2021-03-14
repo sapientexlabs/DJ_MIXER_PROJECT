@@ -9,7 +9,7 @@
 */
 
 #include "TrackData.h"
-#include <filesystem>
+
 
 
 TrackData::TrackData(juce::File _file) : file(_file), 

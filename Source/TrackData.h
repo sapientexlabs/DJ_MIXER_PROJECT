@@ -8,6 +8,7 @@
   ==============================================================================
 */
 #pragma once
+#include <filesystem>
 #include <JuceHeader.h>
 
 class TrackData
