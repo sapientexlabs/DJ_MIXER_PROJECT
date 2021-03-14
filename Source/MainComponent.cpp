@@ -82,10 +82,11 @@ void MainComponent::paint (Graphics& g)
 
 void MainComponent::resized()
 {
-    deckGUI1.setBounds(0, 0, getWidth()/2, getHeight()/2);
-    deckGUI2.setBounds(getWidth()/2, 0, getWidth()/2, getHeight()/2);
+    int Height = getHeight() / 6; 
+    deckGUI1.setBounds(0, 0, getWidth()/2, Height * 4);
+    deckGUI2.setBounds(getWidth()/2, 0, getWidth()/2, Height * 4);
 
-    playlistComponent.setBounds(0, getHeight()/2, getWidth(), getHeight()/2); 
+    playlistComponent.setBounds(0, Height * 4, getWidth(), Height * 2); 
 
 }
 

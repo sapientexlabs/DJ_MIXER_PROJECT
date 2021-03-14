@@ -49,9 +49,9 @@ PlaylistComponent::~PlaylistComponent()
 
 void PlaylistComponent::paint (juce::Graphics& g)
 {
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-
-    g.setColour (juce::Colours::white);
+   //g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
+    g.fillAll(Colours::black); 
+    g.setColour (juce::Colours::red);
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
 
     g.setColour (juce::Colours::red);
@@ -263,29 +263,29 @@ int PlaylistComponent::searchPlaylist(juce::String searchText)
 
 void PlaylistComponent::saveTrackPlaylist()
 {
-    std::ofstream playlist("playlist.csv");
-    for (TrackData& a : tracksData)
+    std::ofstream playlistCSV("playlist.csv");
+    for (TrackData& t : tracksData)
     {
-        playlist << a.file.getFullPathName() << "," << a.length << "\n";
+        playlistCSV << t.file.getFullPathName() << "," << t.length << "\n";
     }
 }
 
 void PlaylistComponent::loadTrackPlaylist()
 {
-    std::ifstream playlist("playlist.csv");
+    std::ifstream playlistCSV("playlist.csv");
     std::string filePath;
     std::string length;
     
-    if (playlist.is_open())
+    if (playlistCSV.is_open())
     {
-        while (getline(playlist, filePath, ',')) {
+        while (getline(playlistCSV, filePath, ',')) {
             juce::File file{file};
-            TrackData newTrackData{ file };
+            TrackData newTrackData{file};
 
-            getline(playlist, length);
+            getline(playlistCSV, length);
             newTrackData.length = length;
             tracksData.push_back(newTrackData);
         }
     }
-    playlist.close();
+    playlistCSV.close();
 }

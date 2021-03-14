@@ -37,8 +37,8 @@ void WaveformDisplay::paint (Graphics& g)
        You should replace everything in this method with your own
        drawing code..
     */
-
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
+    //g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
+    g.fillAll(Colours::black);
 
     g.setColour (Colours::grey);
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
